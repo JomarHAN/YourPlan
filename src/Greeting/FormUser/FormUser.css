@@ -1,0 +1,80 @@
+.formUser__frameTitle {
+    font-size: 50px;
+    font-weight: bolder;
+    transform: translateY(30px);
+    background-color: white;
+    display: inline-block;
+}
+
+.yellow .formUser__frameTitle {
+
+    color: #666666;
+}
+
+.green .formUser__frameTitle {
+
+
+    color: #009900;
+}
+
+.formUser__frame .MuiFormLabel-root,
+.formControl .MuiInputBase-root {
+    font-family: inherit;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.formUser__frame.yellow .MuiFormLabel-root,
+.yellow .formControl .MuiInputBase-root {
+    color: #666666;
+}
+
+.formUser__frame.green .MuiFormLabel-root,
+.green .formControl .MuiInputBase-root {
+    color: #009900;
+}
+
+.formControl .textField {
+    margin-top: 20px;
+}
+
+.yellow .formControl .PrivateNotchedOutline-root-1 {
+    border-color: #D6B656;
+}
+
+.green .formControl .PrivateNotchedOutline-root-1 {
+    border-color: #60A917;
+}
+
+.formControl {
+    width: 500px;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 8px;
+    padding-top: 30px;
+}
+
+.yellow .formControl {
+    border-color: #D6B656;
+}
+
+.green .formControl {
+    border-color: #60A917;
+}
+
+.formUser .buttonStyle {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.formUser {
+    margin-bottom: 10px;
+}
+
+
+
+@media (max-width:500px) {
+    .formControl {
+        width: 100%;
+    }
+}

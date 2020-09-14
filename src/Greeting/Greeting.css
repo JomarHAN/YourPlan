@@ -1,0 +1,68 @@
+.greeting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.greeting__title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.greeting__title strong {
+    color: #009900;
+    font-size: 80px;
+    font-weight: bolder;
+}
+
+.greeting__title p {
+    color: #009900;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.greeting__button {
+    text-align: center;
+    width: 100%;
+}
+
+.greeting__button .buttonStyle {
+    font-family: "Comic Neue", cursive;
+    font-size: 20px;
+    height: 50px;
+    width: 300px;
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+.greeting__button .buttonStyle.signUpStyle {
+    background-image: linear-gradient(to bottom, #fff2cc, #fdce42);
+    color: black;
+    border: 1px solid #d6b656;
+}
+
+.greeting__buttonSignUp,
+.greeting__buttonSignIn {
+    font-size: 20px;
+    color: #464646;
+    font-weight: bolder;
+}
+
+.greeting__buttonSignIn {
+    color: #4d9900;
+    margin-top: 20px;
+}
+
+.greeting__button .buttonStyle.signInStyle {
+    background-image: linear-gradient(to bottom, #8cd443, #46810b);
+    border: 1px solid #2d7600;
+    color: white;
+}
+
+.greeting__button .buttonStyle.backStyle {
+    background-image: linear-gradient(to bottom, #f88c88, #e21a00);
+    color: white;
+    border: 1px solid #6b0404;
+}
