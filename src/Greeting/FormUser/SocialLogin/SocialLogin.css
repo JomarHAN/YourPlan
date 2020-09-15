@@ -1,0 +1,65 @@
+.sociallogin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sociallogin p {
+    font-size: 25px;
+    font-weight: bolder;
+    color: #666666;
+}
+
+.general__fb,
+.general__google,
+.general__twitter {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+.general__fb {
+    background-image: url('./facebook-icon.png');
+
+
+}
+
+.general__google {
+    background-image: url('./google-icon.svg');
+}
+
+.general__twitter {
+    background-image: url('./twitter-icon.jpg');
+}
+
+.general {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: 0.2s ease;
+}
+
+.general:hover {
+
+    box-shadow: 2px 2px 6px 0;
+}
+
+.sociallogin__icon {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 500px) {
+    .sociallogin__icon {
+        width: 80%;
+    }
+}

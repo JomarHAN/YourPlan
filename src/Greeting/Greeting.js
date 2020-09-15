@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Greeting.css";
 import Button from "@material-ui/core/Button";
 import FormUser from "./FormUser/FormUser";
 
 function Greeting() {
-  const [btnClick, setBtnClick] = useState("signIn");
+  const [btnClick, setBtnClick] = useState();
 
   return (
     <div className="greeting">
