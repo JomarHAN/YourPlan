@@ -1,4 +1,5 @@
-import React from "react";
+import { auth } from "./firebase";
+import React, { useEffect } from "react";
 import "./App.css";
 import Greeting from "./Greeting/Greeting";
 

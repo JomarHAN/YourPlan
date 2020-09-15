@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FormUser.css";
 import { TextField, FormControl, Button } from "@material-ui/core";
 import SocialLogin from "./SocialLogin/SocialLogin";
+import { auth } from "../../firebase";
 
 function FormUser({ stateClick }) {
   const [username, setUsername] = useState("");
@@ -10,9 +11,21 @@ function FormUser({ stateClick }) {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(username);
-    console.log(email);
-    console.log(password);
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        return authUser.user.updateProfile({
+          displayName: username,
+        });
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => alert(error.message));
   };
 
   return (
@@ -35,7 +48,7 @@ function FormUser({ stateClick }) {
                 onChange={(e) => setEmail(e.target.value)}
                 className="textField"
                 label="Email"
-                type="mail"
+                type="email"
                 variant="outlined"
               />
               <TextField
@@ -64,7 +77,7 @@ function FormUser({ stateClick }) {
               <TextField
                 className="textField"
                 label="Email"
-                type="mail"
+                type="email"
                 variant="outlined"
               />
               <TextField
@@ -73,7 +86,12 @@ function FormUser({ stateClick }) {
                 type="password"
                 variant="outlined"
               />
-              <Button className="buttonStyle signInStyle">Sign In</Button>
+              <Button
+                onClick={handleSignIn}
+                className="buttonStyle signInStyle"
+              >
+                Sign In
+              </Button>
             </FormControl>
             <SocialLogin />
           </form>
