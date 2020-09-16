@@ -11,7 +11,7 @@ function Greeting() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        setUser(authUser.displayName);
+        setUser(authUser);
       } else {
         setUser(null);
       }
@@ -28,53 +28,44 @@ function Greeting() {
         <p>Let's keep your plan</p>
         <p>on its successful path</p>
       </div>
-      {user && <h1>Welcome {user}</h1>}
-      {user ? (
-        <Button
-          onClick={() => auth.signOut()}
-          className="buttonStyle backStyle"
-        >
-          Sign Out
-        </Button>
-      ) : (
-        <div className="greeting__button">
-          {!btnClick ? (
-            <>
-              <div className="greeting__buttonSignUp">
-                <p>Are you new?</p>
-                <p>Let's sign up</p>
-                <Button
-                  onClick={() => setBtnClick("signUp")}
-                  className="buttonStyle signUpStyle"
-                >
-                  Register
-                </Button>
-              </div>
-              <div className="greeting__buttonSignIn">
-                <p>Or you have an</p>
-                <p>account already?</p>
-                <Button
-                  onClick={() => setBtnClick("signIn")}
-                  className="buttonStyle signInStyle"
-                >
-                  Sign In
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <FormUser stateClick={btnClick} />
 
+      <div className="greeting__button">
+        {!btnClick ? (
+          <>
+            <div className="greeting__buttonSignUp">
+              <p>Are you new?</p>
+              <p>Let's sign up</p>
               <Button
-                onClick={() => setBtnClick()}
-                className="buttonStyle backStyle"
+                onClick={() => setBtnClick("signUp")}
+                className="buttonStyle signUpStyle"
               >
-                Back
+                Register
               </Button>
-            </>
-          )}
-        </div>
-      )}
+            </div>
+            <div className="greeting__buttonSignIn">
+              <p>Or you have an</p>
+              <p>account already?</p>
+              <Button
+                onClick={() => setBtnClick("signIn")}
+                className="buttonStyle signInStyle"
+              >
+                Sign In
+              </Button>
+            </div>
+          </>
+        ) : (
+          <>
+            <FormUser stateClick={btnClick} />
+
+            <Button
+              onClick={() => setBtnClick()}
+              className="buttonStyle backStyle"
+            >
+              Back
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

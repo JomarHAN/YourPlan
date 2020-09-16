@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./FormUser.css";
 import { TextField, FormControl, Button } from "@material-ui/core";
 import SocialLogin from "./SocialLogin/SocialLogin";
@@ -19,6 +19,9 @@ function FormUser({ stateClick }) {
         });
       })
       .catch((error) => alert(error.message));
+    setUsername("");
+    setPassword("");
+    setEmail("");
   };
 
   const handleSignIn = (e) => {
@@ -26,6 +29,9 @@ function FormUser({ stateClick }) {
     auth
       .signInWithEmailAndPassword(email, password)
       .catch((error) => alert(error.message));
+    setUsername("");
+    setPassword("");
+    setEmail("");
   };
 
   return (
@@ -75,12 +81,16 @@ function FormUser({ stateClick }) {
           <form className="formControl">
             <FormControl>
               <TextField
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="textField"
                 label="Email"
                 type="email"
                 variant="outlined"
               />
               <TextField
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="textField"
                 label="Password"
                 type="password"

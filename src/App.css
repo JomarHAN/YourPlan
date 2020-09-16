@@ -6,8 +6,41 @@
   font-family: 'Comic Neue', cursive;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .app__greeting {
-  min-width: 370px;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  background-color: white;
+  transition: .5s ease-in-out;
+  transform: translateY(-100%);
+}
+
+
+.app__home {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  background-color: lightgray;
+  height: 100vh;
+}
+
+.show {
+  transform: translateY(0px);
+}
+
+.dropDown {
+  animation: drop .5s forwards;
+}
+
+@keyframes drop {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
