@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FormUser.css";
 import { TextField, FormControl, Button } from "@material-ui/core";
 import SocialLogin from "./SocialLogin/SocialLogin";
 import { auth } from "../../firebase";
+import { useStateValue } from "../../contextAPI/StateProvider";
 
 function FormUser({ stateClick }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [{ user }, dispatch] = useStateValue();
+  var userTrack = {};
+
+  const transferDispatch = (data) => {
+    dispatch({
+      type: "LOGIN",
+      user: data,
+    });
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -18,6 +28,12 @@ function FormUser({ stateClick }) {
           displayName: username,
         });
       })
+      .then((authUser) => {
+        // dispatch({
+        //   type: "LOGIN",
+        //   user: authUser.displayName,
+        // });
+      })
       .catch((error) => alert(error.message));
     setUsername("");
     setPassword("");
@@ -25,9 +41,12 @@ function FormUser({ stateClick }) {
   };
 
   const handleSignIn = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        transferDispatch(authUser.user.displayName);
+      })
       .catch((error) => alert(error.message));
     setUsername("");
     setPassword("");

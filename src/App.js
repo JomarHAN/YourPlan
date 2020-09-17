@@ -10,8 +10,6 @@ function App() {
       if (authUser) {
         const greeting = document.querySelector(".app__greeting");
         greeting.classList.remove("show");
-      } else {
-        console.log("no");
       }
     });
     return () => {

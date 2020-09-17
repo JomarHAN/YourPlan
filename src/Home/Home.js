@@ -1,9 +1,12 @@
 import { Button } from "@material-ui/core";
 import React from "react";
+import { useStateValue } from "../contextAPI/StateProvider";
 import { auth } from "../firebase";
 import "./Home.css";
 
 function Home() {
+  const [{ user }] = useStateValue();
+
   const handleSignOut = () => {
     auth.signOut();
     const greeting = document.querySelector(".app__greeting");
