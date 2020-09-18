@@ -1,18 +1,19 @@
 export const initialState = {
-    user: null
-}
+  userDisplay: null,
+};
 
 const reducer = (action, state) => {
-    console.log(action)
-    switch (action.type) {
-        case 'LOGIN':
-            return { state }
-        case 'LOGOUT':
-            return { state }
+  console.log(action);
+  switch (action.type) {
+    case "SET_USER":
+      return {
+        ...state,
+        userDisplay: action.userDisplay,
+      };
 
-        default:
-            return state
-    }
-}
+    default:
+      return state;
+  }
+};
 
 export default reducer;

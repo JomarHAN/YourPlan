@@ -3,23 +3,32 @@ import "./Greeting.css";
 import Button from "@material-ui/core/Button";
 import FormUser from "./FormUser/FormUser";
 import { auth } from "../firebase";
+import { useStateValue } from "../contextAPI/StateProvider";
 
 function Greeting() {
   const [btnClick, setBtnClick] = useState();
-  const [user, setUser] = useState(null);
+  const [{ userDisplay }, dispatch] = useStateValue();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        setUser(authUser);
+        dispatch({
+          type: "SET_USER",
+          userDisplay: authUser,
+        });
       } else {
-        setUser(null);
+        dispatch({
+          type: "SET_USER",
+          useDisplay: null,
+        });
       }
+      return () => {
+        unsubscribe();
+      };
     });
-    return () => {
-      unsubscribe();
-    };
-  }, [user]);
+  }, []);
+
+  console.log(userDisplay);
 
   return (
     <div className="greeting">

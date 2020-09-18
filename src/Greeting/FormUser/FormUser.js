@@ -9,15 +9,6 @@ function FormUser({ stateClick }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [{ user }, dispatch] = useStateValue();
-  var userTrack = {};
-
-  const transferDispatch = (data) => {
-    dispatch({
-      type: "LOGIN",
-      user: data,
-    });
-  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -28,12 +19,7 @@ function FormUser({ stateClick }) {
           displayName: username,
         });
       })
-      .then((authUser) => {
-        // dispatch({
-        //   type: "LOGIN",
-        //   user: authUser.displayName,
-        // });
-      })
+
       .catch((error) => alert(error.message));
     setUsername("");
     setPassword("");
@@ -44,9 +30,7 @@ function FormUser({ stateClick }) {
     // e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        transferDispatch(authUser.user.displayName);
-      })
+
       .catch((error) => alert(error.message));
     setUsername("");
     setPassword("");
