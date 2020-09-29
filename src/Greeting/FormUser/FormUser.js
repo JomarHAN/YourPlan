@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./FormUser.css";
 import { TextField, FormControl, Button } from "@material-ui/core";
 import SocialLogin from "./SocialLogin/SocialLogin";
 import { auth } from "../../firebase";
-import { useStateValue } from "../../contextAPI/StateProvider";
 
 function FormUser({ stateClick }) {
   const [username, setUsername] = useState("");
@@ -27,7 +26,7 @@ function FormUser({ stateClick }) {
   };
 
   const handleSignIn = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
 
@@ -71,6 +70,7 @@ function FormUser({ stateClick }) {
               <Button
                 onClick={handleRegister}
                 className="buttonStyle signUpStyle"
+                type="submit"
               >
                 Sign Up
               </Button>
@@ -102,6 +102,7 @@ function FormUser({ stateClick }) {
               <Button
                 onClick={handleSignIn}
                 className="buttonStyle signInStyle"
+                type="submit"
               >
                 Sign In
               </Button>
